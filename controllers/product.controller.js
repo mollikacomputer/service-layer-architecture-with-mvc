@@ -1,8 +1,9 @@
-const Product = require("../models/Product");
+const { getProductsService, createProductService } = require("../services/product.services")
 
 exports.getProducts = async(req, res, next) =>{
     try {
-        const products = await Product.findById("63320832bb5aa4d6e45b1716");
+        const products = getProductsService();
+
         res.status(200).json({
             status:"success",
             data:products
@@ -19,9 +20,8 @@ exports.getProducts = async(req, res, next) =>{
   exports.createProduct = async(req, res, next)=>{
     // console.log(req.body);
     try{
-      const product = new Product(req.body)
-      const result = await product.save()
-    // logger call here
+      // save or create
+      const result = await createProductService(req.body)
         result.logger()
 
       res.status(200).json({
