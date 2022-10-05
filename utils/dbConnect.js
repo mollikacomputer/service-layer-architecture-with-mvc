@@ -1,5 +1,4 @@
-function dbConnect(){
-    console.log('DB connected');
+const dbConnect = () =>{
+    console.log(`simple Db Connected for schema design`);
 }
-
 module.exports = dbConnect;
