@@ -78,7 +78,6 @@ productSchema.methods.logger = function(){
 // schema patern
 // SCHEMA --> MODEL --> QUERY
 // model name first letter must be will Capital letter
-
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;

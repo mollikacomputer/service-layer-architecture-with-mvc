@@ -15,9 +15,9 @@ app.get('/', (req, res) =>{
 
 
 // routes
-
 const productRoute = require('./routs/product.route') 
-// for test post
+
+// for product services
 app.use("/api/v1/product", productRoute);
 
 
