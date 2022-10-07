@@ -50,7 +50,7 @@ const productSchema = mongoose.Schema({
                 values: ['in-stock', "out-of-stock", "discontinued"],
                 message:"Status can't be {VALUE}"
         }
-    }
+    },
 }
 );
 // mongoose middlewares for saving data: pre/post

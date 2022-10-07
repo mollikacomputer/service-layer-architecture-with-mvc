@@ -1,9 +1,10 @@
-const { getProductsService, createProductService } = require("../services/product.services")
+const Product = require("../models/Product");
 
-exports.getProducts = async(req, res, next) =>{
+exports.getProduct = async(req, res, next) =>{
     try {
-        const products = getProductsService();
-
+        // show all name and quantity
+        // mongoose vs mongodb
+        const products = await Product.find({});
         res.status(200).json({
             status:"success",
             data:products
@@ -15,13 +16,15 @@ exports.getProducts = async(req, res, next) =>{
             error:error.message,
         })
     }
+
   }
 
   exports.createProduct = async(req, res, next)=>{
     // console.log(req.body);
     try{
-      // save or create
-      const result = await createProductService(req.body)
+      const product = new Product(req.body)
+      const result = await product.save()
+    // logger call here
         result.logger()
 
       res.status(200).json({
