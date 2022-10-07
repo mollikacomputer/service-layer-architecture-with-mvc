@@ -43,18 +43,18 @@ const productSchema = mongoose.Schema({
         message:"Quantity must be an integer"
     },
 // have some problem status section
-    status:{
-            type: String,
-            required:true,
-            enum:{
-                values: ['in-stock', "out-of-stock", "discontinued"],
-                message:"Status can't be {VALUE}"
-        }
-    },
+    // status:{
+    //         type: String,
+    //         required:true,
+    //         enum:{
+    //             values: ["in-stock", "out-of-stock", "discontinued"],
+    //             message:"Status can't be {VALUE}"
+    //     }
+    // },
 }
 );
 // mongoose middlewares for saving data: pre/post
-productSchema.pre('save', function(next){
+productSchema.pre('create', function(next){
     console.log('Before saving data');
 
     // this keyword
@@ -66,14 +66,14 @@ productSchema.pre('save', function(next){
 });
 
 // mongoose middleware post
-productSchema.post('save', function(doc, next){
-    console.log('After saving data');
+productSchema.post('create', function(doc, next){
+    console.log('After posting data');
 
     next()
 });
 
 productSchema.methods.logger = function(){
-    console.log(`Data saved for ${this.name}, price is: ${this.price}`);
+    console.log(`Data posting for ${this.name}, price is: ${this.price}`);
 }
 // schema patern
 // SCHEMA --> MODEL --> QUERY

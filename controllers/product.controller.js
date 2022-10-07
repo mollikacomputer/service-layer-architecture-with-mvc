@@ -22,8 +22,10 @@ exports.getProduct = async(req, res, next) =>{
   exports.createProduct = async(req, res, next)=>{
     // console.log(req.body);
     try{
-      const product = new Product(req.body)
-      const result = await product.save()
+      // const product = new Product(req.body)
+      // const result = await product.save()
+      const result = await Product.create(req.body)
+
     // logger call here
         result.logger()
 
