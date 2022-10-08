@@ -1,10 +1,11 @@
-const Product = require("../models/Product");
+const { getProductService } = require("../services/product.services")
+
 
 exports.getProduct = async(req, res, next) =>{
     try {
         // show all name and quantity
         // mongoose vs mongodb
-        const products = await Product.find({});
+        const products = getProductService()
         res.status(200).json({
             status:"success",
             data:products
