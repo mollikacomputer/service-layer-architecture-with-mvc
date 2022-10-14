@@ -6,8 +6,12 @@ router.route('/')
 .get(productController.getProduct)
 .post(productController.createProduct)
 
-// update product
 
+
+router.route('/bulk-update')
+.patch(productController.bulkUpdateProduct)
+
+// update product dynamic id bulk update ar pore  pore dite hobe
 router.route('/:id')
 .patch(productController.updateProduct)
 
