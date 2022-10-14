@@ -1,11 +1,11 @@
-const { getProductService } = require("../services/product.services")
+const { getProductService, createProductService, updateProductService } = require("../services/product.services")
 
 
 exports.getProduct = async(req, res, next) =>{
     try {
         // show all name and quantity
         // mongoose vs mongodb
-        const products = getProductService()
+        const products = await getProductService()
         res.status(200).json({
             status:"success",
             data:products
@@ -23,9 +23,8 @@ exports.getProduct = async(req, res, next) =>{
   exports.createProduct = async(req, res, next)=>{
     // console.log(req.body);
     try{
-      // const product = new Product(req.body)
-      // const result = await product.save()
-      const result = await Product.create(req.body)
+
+      const result = await createProductService(req.body);
 
     // logger call here
         result.logger()
@@ -44,4 +43,24 @@ exports.getProduct = async(req, res, next) =>{
     }
     
     // res.send('successfully data post')
+  }
+
+
+  // update product
+
+  exports.updateProduct = async(req, res, next) => {
+      try {
+        const {id} = req.params;
+        const result = await updateProductService(id, req.body);
+        res.status(200).json({
+          status: "success",
+          message: "Successfully update the product"
+        })
+      } catch (error) {
+        res.status(400).json({
+          status:'fail',
+          message:'could not update the product',
+          error: error.message
+        })
+      }
   }

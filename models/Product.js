@@ -42,15 +42,15 @@ const productSchema = mongoose.Schema({
         },
         message:"Quantity must be an integer"
     },
-// have some problem status section
+    // // have some problem status section
     // status:{
-    //         type: String,
-    //         required:true,
-    //         enum:{
-    //             values: ["in-stock", "out-of-stock", "discontinued"],
-    //             message:"Status can't be {VALUE}"
-    //     }
-    // },
+    //     type: String,
+    //     required:true,
+    //     enum:{
+    //         values: ['in-stock', "out-of-stock", "discontinued"],
+    //         message:"Status can't be {VALUE}"
+    //         }
+    //     },
 }
 );
 // mongoose middlewares for saving data: pre/post
